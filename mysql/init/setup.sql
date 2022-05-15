@@ -1,0 +1,4 @@
+CREATE DATABASE IF NOT EXISTS cloudmoreDB;
+CREATE USER 'dbuser'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'dbuser'@'%';
+GO
