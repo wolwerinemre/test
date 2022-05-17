@@ -25,7 +25,7 @@ public class RequestController {
         this.requestService = requestService;
     }
 
-    @Operation(summary = "Send request to consumer")
+    @Operation(summary = "Send requests")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Request has been sent successfully", content = @Content),
             @ApiResponse(responseCode = "400", description = "Cannot convert request", content = @Content),

@@ -5,11 +5,13 @@ import static org.mockito.Mockito.verify;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.cloudmore.project.test.producer.dto.RequestDto;
+import com.cloudmore.project.test.producer.mq.KafkaProducer;
 import com.cloudmore.project.test.producer.service.RequestService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.math.BigDecimal;
 import java.time.Instant;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -31,6 +33,9 @@ class RequestControllerIT {
   ObjectMapper mapper;
 
   @Mock
+  KafkaProducer kafkaProducer;
+
+  @InjectMocks
   RequestService requestService;
 
   @Test
