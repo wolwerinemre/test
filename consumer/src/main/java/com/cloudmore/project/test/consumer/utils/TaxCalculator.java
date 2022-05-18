@@ -1,12 +1,11 @@
 package com.cloudmore.project.test.consumer.utils;
 
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
-
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 @Component
 public final class TaxCalculator {

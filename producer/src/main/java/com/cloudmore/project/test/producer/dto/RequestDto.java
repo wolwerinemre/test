@@ -1,13 +1,12 @@
 package com.cloudmore.project.test.producer.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Data;
-
+import java.math.BigDecimal;
+import java.time.Instant;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
-import java.math.BigDecimal;
-import java.time.Instant;
+import lombok.Data;
 
 @Data
 public class RequestDto {
