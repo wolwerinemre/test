@@ -50,4 +50,64 @@ class RequestControllerIT {
         .andExpect(status().isOk());
     verify(kafkaProducer, times(1)).send(any());
   }
+
+  @Test
+  void test_produce_validation_empty_object() throws Exception {
+    var request = new RequestDto();
+    var builder = MockMvcRequestBuilders.post("/api/request/")
+        .contentType(MediaType.APPLICATION_JSON_VALUE)
+        .content(mapper.writeValueAsBytes(request));
+    mvc.perform(builder)
+        .andExpect(status().isBadRequest());
+  }
+
+  @Test
+  void test_produce_validation_name_filled() throws Exception {
+    var request = new RequestDto();
+    request.setName("Alice");
+    var builder = MockMvcRequestBuilders.post("/api/request/")
+        .contentType(MediaType.APPLICATION_JSON_VALUE)
+        .content(mapper.writeValueAsBytes(request));
+    mvc.perform(builder)
+        .andExpect(status().isBadRequest());
+  }
+
+  @Test
+  void test_produce_validation_surname_filled() throws Exception {
+    var request = new RequestDto();
+    request.setName("Alice");
+    request.setSurname("Thompson");
+    var builder = MockMvcRequestBuilders.post("/api/request/")
+        .contentType(MediaType.APPLICATION_JSON_VALUE)
+        .content(mapper.writeValueAsBytes(request));
+    mvc.perform(builder)
+        .andExpect(status().isBadRequest());
+  }
+
+  @Test
+  void test_produce_validation_eventTime_filled() throws Exception {
+    var request = new RequestDto();
+    request.setName("Alice");
+    request.setSurname("Thompson");
+    request.setEventTime(Instant.now());
+    var builder = MockMvcRequestBuilders.post("/api/request/")
+        .contentType(MediaType.APPLICATION_JSON_VALUE)
+        .content(mapper.writeValueAsBytes(request));
+    mvc.perform(builder)
+        .andExpect(status().isBadRequest());
+  }
+
+  @Test
+  void test_produce_validation_wage_filled_minus() throws Exception {
+    var request = new RequestDto();
+    request.setName("Alice");
+    request.setSurname("Thompson");
+    request.setEventTime(Instant.now());
+    request.setWage(BigDecimal.valueOf(-1));
+    var builder = MockMvcRequestBuilders.post("/api/request/")
+        .contentType(MediaType.APPLICATION_JSON_VALUE)
+        .content(mapper.writeValueAsBytes(request));
+    mvc.perform(builder)
+        .andExpect(status().isBadRequest());
+  }
 }

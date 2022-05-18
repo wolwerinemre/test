@@ -7,11 +7,14 @@ import com.cloudmore.project.test.consumer.service.RequestService;
 import java.math.BigDecimal;
 import java.time.Instant;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
-public class ConsumerServiceIT extends IntegrationTestBase {
+@RunWith(SpringRunner.class)
+class ConsumerServiceIT extends IntegrationTestBase {
 
   @Autowired
   private RequestService requestService;
@@ -31,5 +34,7 @@ public class ConsumerServiceIT extends IntegrationTestBase {
     //then
     assertThat(requestDB).isNotNull();
     assertThat(requestDB.getId()).isNotNull();
+    assertThat(requestDB.getName()).isEqualTo(request.getName());
+    assertThat(requestDB.getSurname()).isEqualTo(request.getSurname());
   }
 }

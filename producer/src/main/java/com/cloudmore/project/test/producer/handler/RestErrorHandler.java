@@ -30,8 +30,8 @@ public class RestErrorHandler {
     }
 
     private HttpStatus resolveAnnotatedResponseStatus(Exception exception) {
-        ResponseStatus annotation = AnnotatedElementUtils   .findMergedAnnotation(exception.getClass(), ResponseStatus.class);
-        return Objects.nonNull(annotation) ? annotation.value() : HttpStatus.INTERNAL_SERVER_ERROR;
+        ResponseStatus annotation = AnnotatedElementUtils.findMergedAnnotation(exception.getClass(), ResponseStatus.class) ;
+        return Objects.nonNull(annotation) ? annotation.value() : HttpStatus.BAD_REQUEST;
     }
 
     private String getLogMessage(ApiError apiError) {
