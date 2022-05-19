@@ -7,6 +7,7 @@ import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -15,8 +16,10 @@ import lombok.experimental.Accessors;
 public class RequestDto {
 
     @NotEmpty
+    @Size(min = 1, max = 200)
     private String name;
     @NotEmpty
+    @Size(min = 1, max = 200)
     private String surname;
     @NotNull
     @DecimalMin(value = "0", inclusive = false)
