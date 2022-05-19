@@ -48,7 +48,7 @@ class RequestControllerIT {
         .content(mapper.writeValueAsBytes(request));
     mvc.perform(builder)
         .andExpect(status().isOk());
-    verify(kafkaProducer, times(1)).send(any());
+    verify(kafkaProducer, times(1)).sendRequest(any());
   }
 
   @Test

@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 @Component
-public final class TaxCalculator {
+public class TaxCalculator {
 
     @Min(1)
     @Max(100)
@@ -16,9 +16,7 @@ public final class TaxCalculator {
     private int taxPercent;
 
     public BigDecimal calculateWageWithTax(BigDecimal wage) {
-        return wage
-                .multiply(BigDecimal.valueOf(100 + taxPercent))
-                .divide(BigDecimal.valueOf(100),2, RoundingMode.HALF_UP);
+        return wage.add(this.calculateTax(wage));
     }
 
     public BigDecimal calculateTax(BigDecimal wage) {

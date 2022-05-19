@@ -17,7 +17,8 @@ public class RequestService {
     }
 
     public void send (RequestDto requestDto) throws JsonProcessingException {
-        producer.send(requestDto);
+        log.info("RequestDTO {}", requestDto.toString());
+        producer.sendRequest(requestDto);
     }
 
 }
