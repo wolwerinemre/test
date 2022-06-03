@@ -16,10 +16,10 @@ import lombok.experimental.Accessors;
 public class RequestDto {
 
     @NotEmpty
-    @Size(max = 200)
+    @Size(max = 100)
     private String name;
     @NotEmpty
-    @Size(max = 200)
+    @Size(max = 100)
     private String surname;
     @NotNull
     @DecimalMin(value = "0", inclusive = false)
