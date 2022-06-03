@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class RequestService {
 
@@ -17,7 +18,7 @@ public class RequestService {
     private final RequestMapper requestMapper;
     private final TaxCalculator taxCalculator;
 
-    @Transactional
+
     public Request save (RequestDto requestDto) {
         var request = requestMapper.dtoToModel(requestDto);
         request.setTax(taxCalculator.calculateTax(request.getWage()));

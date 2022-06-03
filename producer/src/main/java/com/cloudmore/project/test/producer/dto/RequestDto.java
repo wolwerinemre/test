@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Digits;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -16,10 +16,10 @@ import lombok.experimental.Accessors;
 public class RequestDto {
 
     @NotEmpty
-    @Max(200)
+    @Size(max = 200)
     private String name;
     @NotEmpty
-    @Max(200)
+    @Size(max = 200)
     private String surname;
     @NotNull
     @DecimalMin(value = "0", inclusive = false)
